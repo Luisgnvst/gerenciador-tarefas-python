@@ -1,3 +1,4 @@
+tarefas = []
 while True:
     print("\n------Menu----")
     print("1 - Adicionar tarefa")
@@ -5,14 +6,12 @@ while True:
     print("3 - Sair")
     resp = input("Escolha 1 opcao ai: ")
     if resp == "1":
-        input("Digite o nome da tarerfa: ")
+        nometarefas = input("Digite o nome da tarerfa: ")
+        tarefas.append(nometarefas)
 
     elif resp == "2":
-        print("\nTarefa listadas com sucesso")
+        print(tarefas)
 
     else:
         print("Saindo...")
         break
-
-
-
