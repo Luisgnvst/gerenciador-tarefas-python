@@ -1,6 +1,16 @@
 import json
+def carregar_tarefas():
+    try:
+        with open("tarefas.json", "r") as arquivo:
+            return json.load(arquivo)
+    except FileNotFoundError:
+        return []
 
-tarefas = []
+def salvar_tarefas():
+    with open("tarefas.json", "w") as arquivo:
+        json.dump(tarefas, arquivo)
+
+tarefas = carregar_tarefas()
 while True:
     print("\n------Menu----")
     print("1 - Adicionar tarefa")
@@ -9,8 +19,9 @@ while True:
     print("Qualquer outro para sair!")
     resp = input("Escolha 1 opcao ai: ")
     if resp == "1":
-        nometarefas = input("Digite o nome da tarerfa: ")
+        nometarefas = input("Digite o nome da tarefa: ")
         tarefas.append(nometarefas)
+        salvar_tarefas()
 
     elif resp == "2":
         if len(tarefas) == 0:
@@ -22,6 +33,7 @@ while True:
     elif resp == "3":
         tirar = int(input("Qual quer remover?(Digite o numero dela) "))
         tarefas.pop(tirar-1)
+        salvar_tarefas()
 
     else:
         print("Saindo...")
